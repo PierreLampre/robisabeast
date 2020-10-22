@@ -1,0 +1,663 @@
+/*
+
+Theme Name: Rob Site Theme
+Author: Justin Lampe
+Version: 1.0
+
+*/
+
+/* Shared Base Style */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Saira', sans-serif;
+    color: white;
+    z-index: 1;
+}
+
+.container {
+    display: grid;
+    margin: 0 auto;
+}
+
+/* Nav */
+
+.navbar{
+    color: white;
+    background-color: rgb(0,0,0,0.6);
+    width: 100vw;
+    height: 11vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(grey, black);
+    z-index: 10;
+    position: fixed;
+    top: 0;
+}
+
+.navlinks{
+    display: flex;
+    justify-content: space-evenly;
+    width: 960px;
+    margin-right: 12px;
+}
+
+.navlink{
+    text-decoration: none;
+    list-style: none;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.navlink:last-of-type{
+    margin-top: -1.5px;
+}
+
+.navlink:hover{
+    text-decoration: underline;
+}
+
+.navlink:hover:last-of-type{
+    text-decoration: none;
+}
+
+.icon {
+    width: 30px;
+    background-color: white;
+    border-radius: 6px;
+    transition-timing-function: ease; 
+    transition-duration: 1s;
+}
+
+.icon:hover{
+    background-color: rgb(167, 151, 151);
+}
+
+.insta {
+    border-radius: 8px;
+    border: 1px white solid;
+    margin: 0 6px 0 6px;
+}
+
+.insta:hover{
+    border: 1px rgb(167, 151, 151) solid;
+}
+
+.twitter {
+    border-radius: 2px;
+}
+
+/* Hamburger Menu Styles */
+
+.menu-wrap{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    margin-left: 12px;
+    visibility: hidden;
+}
+
+.menu-wrap .toggler{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 30;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    opacity: 0;
+}
+
+.menu-wrap .toggler:checked{
+    visibility: visible;
+}
+
+.menu-wrap .hamburger{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    width: 60px;
+    height: 60px;
+    padding: 1rem;
+    background: rgb(0,0,0,0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hamburger Lines */
+
+.menu-wrap .hamburger > div{
+    position: relative;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+}
+
+.menu-wrap .hamburger > div:before,
+.menu-wrap .hamburger > div:after{
+    content: "";
+    position: absolute;
+    z-index: 20;
+    top: -10px;
+    width: 100%;
+    height: 2px;
+    background: inherit;
+}
+
+.menu-wrap .hamburger > div:after{
+    top: 10px;
+}
+
+/* Animation */
+
+.menu-wrap .toggler:checked + .hamburger > div{
+    transform: rotate(135deg);
+    visibility: visible;
+}
+
+.menu-wrap .toggler:checked + .hamburger > div:before,
+.menu-wrap .toggler:checked + .hamburger > div:after{
+    top: 0;
+    transform: rotate(90deg);
+    visibility: visible;
+}
+
+/* Rotate on hover when checked */
+
+
+.menu-wrap .toggler:checked:hover + .hamburger > div{
+    transform: rotate(225deg);
+}
+
+.menu-wrap .menu{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-wrap .menu > div{
+    background: rgb(0,0,0,0.9);
+    width: 200vw;
+    height: 200vw;
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0);
+    transition: all 0.4s ease;
+}
+
+.menu-wrap .menu > div > div{
+    text-align: center;
+    max-width: 90vw;
+    max-height: 100vh;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.menu-wrap .menu > div > div > ul > li{
+    list-style: none;
+    color: white;
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+.menu-wrap .menu > div > div > ul > li > a{
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.4s ease;
+}
+
+/* Show Menu */
+
+.menu-wrap .toggler:checked ~ .menu {
+    visibility: visible;
+}
+
+.menu-wrap .toggler:checked ~ .menu > div{
+    transform: scale(1);
+    transition-duration: 0.75s;
+}
+
+.menu-wrap .toggler:checked ~ .menu > div >div{
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+@media screen and (max-width: 500px) {
+    .menu-wrap{
+        visibility: visible;
+    }
+}
+
+
+/* Home Styles */
+
+.heading{
+    margin: 0 auto;
+    margin-top: 114px;
+    font-family: 'Comfortaa', cursive;
+    font-size: 4rem;
+    letter-spacing: 2px;
+}
+
+.therefore{
+    font-size: 5.6rem;
+}
+
+.new-album-box{
+    margin: 0 auto;
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    grid-gap: 45px;
+    padding-right: 35px;
+}
+
+.new-album-img{
+    width: 225px;
+    height: 200px;
+    grid-column: 1 / 2;
+    border: 4px solid white;
+}
+
+.album-blurb{
+    grid-column: 2 / 3;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+.na, .outwhen{
+    color: rgb(105, 92, 92);
+    -webkit-text-stroke: 1px white; 
+    font-size: 1.2rem;
+}
+
+.btn{
+    padding: 10px;
+    border-radius: 4px;
+    transition-timing-function: ease; 
+    transition-duration: 1.5s;
+    text-decoration: none;
+    color: white;
+}
+
+.btn:hover{
+    background-color: white;
+    color: black;
+}
+
+.no-line{
+    text-decoration: none;
+    color: white;
+}
+
+.credits{
+    margin: 0 auto;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    width: 400px;
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: rgb(167, 151, 151);
+}
+
+.credits > span > a{
+    color: rgb(167, 151, 151);
+    text-decoration: none;
+}
+
+.credits > span > a:hover{
+    text-decoration: underline;
+}
+
+/* Footer */
+
+.the-footer{
+    display: flex;
+}
+
+.glass-spikes1, .glass-spikes2{
+    width: 50vw;
+    height: 12vh;
+}
+
+.fm-home{
+    margin-top: 8.4rem;
+}
+
+.fm-works{
+    margin-top: 3.2rem;
+}
+
+.fm-book{
+    margin-top: 3.6rem;
+}
+
+.fm-album{
+    margin-top: 3.75rem;
+}
+
+/* About Rob Styles */
+
+.rob{
+    width: 475px;
+    height: 350px;
+    margin: 0 auto;
+    margin-top: 128px;
+    padding-right: 20px;
+    border-radius: 250px;
+}
+
+.about-rob{
+    margin: 0 auto;
+    max-width: 960px;
+    margin-top: 40px;
+    line-height: 2;
+}
+
+.rob-p{
+    margin-bottom: 20px;
+}
+
+.projects{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.mp-div{
+    display: grid;
+    grid-template-rows: 50% 50%;
+    justify-items: center;
+    align-items: center;
+}
+
+.mp-div > p{
+    grid-row: 1 / 2;
+    font-size: 18px;
+}
+
+.icon-box{
+    grid-row: 2 / 3;
+}
+
+/* My Work Styles */
+
+.robs-work{
+    margin: 0 auto;
+    margin-top: 96px;
+    max-width: 960px;
+    padding-right: 36px;
+}
+
+.literature{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+.albums{
+    display: grid;
+}
+
+.title{
+    justify-self: center;
+    margin-bottom: 15px;
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+.book-img{
+    width: 150px;
+    height: 175px;
+    margin: 0 0 20px 0;
+}
+
+.album-img{
+    width: 175px;
+    height: 150px;
+    margin: 0 20px 0 20px;
+}
+
+.wp-image-114, .wp-image-107{
+    margin: 0 20px 0 20px;
+}
+
+/* btv-book */
+
+.work-box{
+    margin: 0 auto;
+    margin-top: 128px;
+    display: grid;
+    justify-items: center;
+    padding-right: 20px;
+}
+
+.margin20{
+    margin: 20px 0 20px 0;
+}
+
+.the-book-img{
+    width: 12rem;
+    margin: 20px 0 20px 0;
+}
+
+.the-album-img{
+    width: 20rem;
+    height: 19rem;
+    margin: 20px 0 20px 0;
+}
+
+.work-title{
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Blog Styles */
+
+.blog-heading{
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    font-family: 'Comfortaa', cursive;
+    font-size: 4rem;
+    letter-spacing: 2px;
+}
+
+.post-item{
+    margin: 12px 0 12px 0;
+    padding: 16px;
+    background-color: black;
+    border: 2px solid white;
+    border-radius: 14px;
+    width: 700px;
+}
+
+.post-title{
+    text-transform: uppercase;
+    margin: 6px 0 6px 0;
+}
+
+.metabox{
+    background: rgb(197, 196, 196);
+    border: 1px solid black;
+    border-radius: 7px;
+    padding: 5px;
+    color: black;
+    max-width: 320px;
+    margin: 6px 0 6px 0;
+    text-align: center;
+}
+
+.generic-content{
+    margin: 20px 0 6px 0;
+}
+
+.no-posts{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    padding: 16px;
+    background-color: black;
+    border: 2px solid white;
+    border-radius: 14px;
+    margin-bottom: 168px;
+}
+
+.page-numbers {
+    color: white;
+}
+
+@media screen and (max-width: 1370px) {
+
+    body{
+        background-position-x: 20%;
+    }
+
+    .about-rob{
+        padding: 0 56px 0 56px;
+    }
+
+  }
+
+  @media screen and (max-width: 850px) {
+
+    .glass-spikes1 {
+        width: 100vw;
+    }
+
+    .glass-spikes2{
+        display: none;
+    }
+
+  }
+  
+  @media screen and (max-width: 830px) {
+    
+    .projects{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .icon-box{
+        margin-bottom: 8px;
+        margin-top: 3px;
+    }
+
+  }
+
+  @media screen and (max-width: 740px) {
+
+    .new-album-box{
+        grid-template-rows: 50% 50%;
+        grid-template-columns: 100%;
+        padding: 0;
+    }
+    
+    .new-album-img{
+        grid-row: 1 / 2;
+        grid-column: 1 / 2;
+        margin: 0 auto;
+    }
+    
+    .album-blurb{
+        grid-row: 2 / 3;
+        grid-column: 1 / 2;
+    }
+    
+    .work-title{
+        font-size: 1.3rem;
+    }
+
+    .post-item{
+        width: 460px;
+    }
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+    .heading{
+        font-size: 3rem;
+    }
+
+    .therefore{
+        font-size: 4.6rem;
+    }
+
+  }
+
+  @media screen and (max-width: 500px) {
+
+    .navlinks{
+        display: none;
+    }
+
+    .heading{
+        font-size: 2.5rem;
+    }
+
+    .therefore{
+        font-size: 3.3rem;
+    }
+
+    .new-album-box{
+        margin-top: 40px;
+    }
+
+    .album-img{
+        height: 140px;
+        width: 140px;
+    }
+    
+    .about-rob{
+        width: 400px;
+        padding: 0 24px 0 24px;
+    }
+
+    .rob{
+        width: 400px;
+    }
+
+    .robs-work{
+        padding-right: 0;
+    }
+
+    .post-item{
+        width: 400px;
+    }
+
+  }
